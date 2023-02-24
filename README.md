@@ -309,3 +309,4 @@ We found that there is strong evidence to suggest that `avg_rating` is MAR, depe
 
 ## Hypothesis Testing
 
+With the power of hypothesis testing, I will try to answer the original question: what kinds of recipes have the highest calories?
