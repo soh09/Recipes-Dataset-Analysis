@@ -272,13 +272,13 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
 
 1. Is avg_rating missingness dependent on the `calories (#)` column?
     <iframe src = 'assests/miss_dist_cal.html' width = 800 height = 800 frameborder = 0> </iframe>
-    <figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)
+    The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)
     - Test statistic: **Total Variation Distance**
         - In order to use TVD as the test statistic, I converted the `calories (#)` into a categorical variable using bin width of 10 calories.
         - Observed statistic: 0.117
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     <iframe src = 'assests/cal_p_result.html' width = 800 height = 400 frameborder = 0> </iframe>
-    <figcation>Result of running the permutation test 10000 times
+    Result of running the permutation test 10000 times
     - Result:
         - a slightly right-skewed unimodal distribution with a center at around 0.08
         - **a p-value of 0**.
@@ -295,7 +295,7 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
         - Observed statistic: 12.76
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     <iframe src = 'assests/ing_p_result.html' width = 800 height = 400 frameborder = 0> </iframe>
-    <figcation>Result of running the permutation test 10000 times
+    Result of running the permutation test 10000 times
     - Result:
         - a multimodal distribution with a center at around 12
         - **a p-value of 0.1819**.
@@ -328,11 +328,13 @@ Method: Randomly draw a `calories (#)` value 209 times and compute the median 1,
 
 ### Result
 <iframe src = 'assests/hyp_test_result.html' width = 800 height = 400 frameborder = 0> </iframe>
-<figcation>Result of 1,000,000 Runs
+Result of 1,000,000 Runs
 
-Result
-- p-value of 0.0. We **reject** the null hypothesis.
-- This means that: the `calories (#)` and `pork-ribs` are likely to be related - it is unlikely that results this extreme (p-val of 0) would appear by pure chance. Since the observed statistic was all the way to the right compared to the empircal distribution of median calories (refer to graph below), recipes with the tag `pork-ribs` do indeed seem to have higher calories, compared to the calories distribution of the entire recipes dataset (but we can never say for sure!).
+- Result
+    - p-value of 0.0. We **reject** the null hypothesis.
+    - This means that: the `calories (#)` and `pork-ribs` are likely to be related - it is unlikely that results this extreme (p-val of 0) would appear by pure chance. Since the observed statistic was all the way to the right compared to the empircal distribution of median calories (refer to graph below), recipes with the tag `pork-ribs` do indeed seem to have higher calories, compared to the calories distribution of the entire recipes dataset (but we can never say for sure!).
+
+------
 
 ## Conclusion
 
