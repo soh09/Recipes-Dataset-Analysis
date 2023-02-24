@@ -114,7 +114,7 @@ At the end, dataframe `post_clean` looks like this.
         1. Overall, a unimodal shape with a heavy right skew, a peak around 150-220 calories, and a max = 45609.0.
         2. The recipe with the most calories was the "powdered hot cocoa mix" recipe, which was a recipe for 1/2 GALLON of hot cocco. No wonder it has 45609 calories...
     - Exploring the outliers
-        * Using this python code to explore the top 10 recipes by calories (output is show below)   
+        * Using this python code to explore the top 10 recipes by calories (output is show below) for relevant columns 
         ```python
         post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
         ``` 
@@ -143,6 +143,16 @@ At the end, dataframe `post_clean` looks like this.
     - Observations
         1. There seems to be a linear relationship bewteen `total fat (PDV)` and `calories (#)`, but after around 11000 calories, the data looks somewhat random
         2. The linear relationship is positive, meaning that the higher the caloric value, the higher the total fat percentage is going to be.
+
+2. Median Calories for the Tags with Top 20 Median Calorie Values
+    - For this one, I'll use median as the measure of center, as I don't want the measure of center to be skewed due to outliers (and there were quite a few outliers, per the univariate analysis)
+    - Additionally, I'll only consider tags that have at least 100 dishes with that tag, as I don't want random tags with a few high calorie dishes to skew the results
+    - Plot type: horizontal bar chart
+    <iframe src = 'assests/top20tag_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    - Each bar represents a tag category (such as `meat`, `main dish`) and the lengths of the bar represents the median value for `calories (#)`
+    - Observations
+        1. `pork-rib`, `whole-chicken`, and `wings` were the top three 
+        2. Meat dishes and sphagetti dishes seem to be the most common. Meat dishes tend to be large in portion size, and spaghetti dishes are high in carbohydrates, likely resulting in the high calories. 
 
 ## Assessment of Missingness
 
