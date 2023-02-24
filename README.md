@@ -106,6 +106,10 @@ post_clean.head(3)
 ------
 
 ### Univariate Analysis
+
+Here, I will inspect the relevant columns of the dataframe individually. 
+
+
 1. `n_ingredients`
     - Plot type: histogram,  box plot
     <iframe src = 'assests/dist_n_ingredients.html' width = 800 height = 800 frameborder = 0> </iframe>
@@ -145,6 +149,10 @@ post_clean.head(3)
 ------
 
 ### Bivariate Analysis
+
+Here, I will inspect the revelant columns of the dataframe in relation to the `calories (#)` or `cal_bins` column. 
+
+
 1. Mean `total fat (PDV)` vs `Calories (#)`
     - Plot type: scatterplot
     <iframe src = 'assests/fat_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
@@ -205,6 +213,18 @@ post_clean.head(3)
 -----
 
 ## Assessment of Missingness
+
+### NMAR (Not Missing At Random) Analysis
+
+Let's quickly go over the missingness types. Definitions will be borrowed from the UCSD DSC80 class, lecture 12.
+
+| Type | Definition |
+|------|------------|
+| Missing By Design (MD) | Missing values can be exactly determined in a column by looking at other columns. |
+| Not Missing At Random (NMAR) | Missingness of values dependend on the values themselves. |
+| Missing At Random (MAR) | Missingness of Values dependent on other column(s) in the dataset. |
+| Missing Completely At Random (MCAR) | Missingness of values does not depend on the column itself or other columns. |
+
 
 
 
