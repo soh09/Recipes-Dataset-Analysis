@@ -336,4 +336,17 @@ Result
 
 ## Conclusion
 
-Recipes for pork ribs seem have to have a tendency for higher calorie values. 
+### So, what kinds of recipes should we avoid?
+Recipes for pork ribs seem have to have a tendency for higher calorie values. If you are on a diet, make sure to avoid pork rib dishes! :smile:
+
+### General Findings
+- "0 star ratings" are missing values - it happens when a reviewer does not add a star rating
+- Many of the distrubutions, including `calories (#)` and `n_ingredients` are right skewed in this dataset.
+- Somewhat unsurprisingly, total fat and calories have a positive correlation. This is likley the case for other nutritional values as well.
+- Meat dishes and spaghetti dishes seem to have the highest overall calories, although we do not have evidence to support this, becuase a hypotheiss test was only conducted for `pork-ribs`.
+- The missinginess of `avg_rating` seems to be dependent on `calories (#)`, although it is hard to pinpoint why it would be dependent on calories. As mentioned in the missingness section, it may be the case that `calories (#)` is a proxy for some other factor which `avg_rating` is truly dependent on; it just seems like `avg_rating` is dependent on `calories (#)`.
+
+### Closing Notes
+I wish I had a column for serving size, so I could normalize the various metrics of recipes, such as `calories (#)` or the other nutritional values. This would have been very useful, as I would have been able to more effectively compare the calorie counts accross different recipes, and perhaps identified a better indicator for high calorie recipes. 
+
+Thank you!
