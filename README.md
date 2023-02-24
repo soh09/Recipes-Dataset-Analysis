@@ -116,22 +116,22 @@ At the end, dataframe `post_clean` looks like this.
     - Exploring the outliers
     Using this python code to explore the top 10 recipes by calories 
     
-    ```python
-    post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
-    ``` 
+```python
+post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
+``` 
 
     | name                                                            |   calories (#) |   minutes |   n_steps |   n_ingredients |   avg_rating |
-|:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
-| granny jones  secret salty sweet biscuit recipe                 |        17551.6 |       150 |         5 |               5 |            3 |
-| homesteader s fireweed honey                                    |        17554   |        60 |         6 |               6 |            5 |
-| cracker snack mix                                               |        18268.7 |        50 |         4 |              10 |            5 |
-| algerian khobz el dar    semolina bread                         |        18656   |       155 |        17 |              11 |            5 |
-| alternate honey barbecue sauce with riblets  applebee s copycat |        21497.8 |       225 |        16 |              12 |            5 |
-| coffee glazed doughnuts                                         |        22371.2 |        69 |        19 |              15 |            5 |
-| hocus pocus cottage cake                                        |        26604.4 |      3000 |        81 |              27 |            5 |
-| ultimate coconut cake ii                                        |        28930.2 |       120 |        53 |              16 |            5 |
-| moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
-| powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
+    |:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
+    | granny jones  secret salty sweet biscuit recipe                 |        17551.6 |       150 |         5 |               5 |            3 |
+    | homesteader s fireweed honey                                    |        17554   |        60 |         6 |               6 |            5 |
+    | cracker snack mix                                               |        18268.7 |        50 |         4 |              10 |            5 |
+    | algerian khobz el dar    semolina bread                         |        18656   |       155 |        17 |              11 |            5 |
+    | alternate honey barbecue sauce with riblets  applebee s copycat |        21497.8 |       225 |        16 |              12 |            5 |
+    | coffee glazed doughnuts                                         |        22371.2 |        69 |        19 |              15 |            5 |
+    | hocus pocus cottage cake                                        |        26604.4 |      3000 |        81 |              27 |            5 |
+    | ultimate coconut cake ii                                        |        28930.2 |       120 |        53 |              16 |            5 |
+    | moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
+    | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
     
         * Observation
             * Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
