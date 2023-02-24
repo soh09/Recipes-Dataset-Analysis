@@ -275,15 +275,20 @@ I will attempt to find depndency in missingness in the `calories (#)` columns by
         - **We have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `cal_bins` column (and therefore the `calories (#)` column).**
 
 2. Is the avg_rating missingness dependent on the `n_ingredients` column?
-
+    <iframe src = 'assests/miss_dist_ing.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <figcaption>n_ingredients by Missingness of avg_rating
+    - How to read the graph
+        - For example, for n_ingredients = 5, there is a 8.6% chance of a missing rating, and a 7
     - Test statistic: **Total Variation Distance**
-        - Observed statistic: 0.04019
+        - Observed statistic: 12.76
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     - Result:
-        - a slightly right-skewed unimodal distribution with a center at around 0.032
-        - **a p-value of 0.0949**.
+        <iframe src = 'assests/ing_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+        <figcation>Result of running the permutation test 10000 times
+        - a multimodal distribution with a center at around 12
+        - **a p-value of 0.1819**.
     - Conclusion
-        - **We do not have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
+        - **We do *not* have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
 
 ------
 
