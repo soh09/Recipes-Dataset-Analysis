@@ -257,37 +257,47 @@ dtype: int64
 
 I will attempt to find depndency in missingness in the `calories (#)` columns by performing two permutation tests. The significance level will be 0.05.
 
+Null Hypotheses: The distributions of `cal_bins` / `n_ingredients` are **the same** when `avg_rating` is missing and not missing.
+
+Alternative Hypotheses: The distributions of `cal_bins` / `n_ingredients` are **not the sam**e when `avg_rating` is missing and not missing.
+
+The significance level will be set at 0.05.
+
 #### Permutation Testing
 
+I have two permutations that I want to attempt: one that will shuffle the `cal_bins` column, and another one that will shuffle the `n_ingredients` column. 
+
 1. Is avg_rating missingness dependent on the `calories (#)` column?
-    <iframe src = 'assests/miss_dist_cal.html' width = 800 height = 800 frameborder = 0> </iframe>
-    <figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)
+<iframe src = 'assests/miss_dist_cal.html' width = 800 height = 800 frameborder = 0> </iframe>
+<figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)
     - Test statistic: **Total Variation Distance**
         - In order to use TVD as the test statistic, I converted the `calories (#)` into a categorical variable using bin width of 10 calories.
         - Observed statistic: 0.117
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     - Result:
-        <iframe src = 'assests/cal_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
-        <figcation>Result of running the permutation test 10000 times
+<iframe src = 'assests/cal_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+<figcation>Result of running the permutation test 10000 times
         - a slightly right-skewed unimodal distribution with a center at around 0.08
         - **a p-value of 0**.
     - Conclusion
+        - Since p-value is <0.05, we reject the null hypothesis
         - **We have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `cal_bins` column (and therefore the `calories (#)` column).**
 
 2. Is the avg_rating missingness dependent on the `n_ingredients` column?
-    <iframe src = 'assests/miss_dist_ing.html' width = 800 height = 800 frameborder = 0> </iframe>
-    <figcaption>n_ingredients by Missingness of avg_rating
+<iframe src = 'assests/miss_dist_ing.html' width = 800 height = 800 frameborder = 0> </iframe>
+<figcaption>n_ingredients by Missingness of avg_rating
     - How to read the graph
         - For example, for n_ingredients = 5, there is a 8.6% chance of a missing rating, and a 7
     - Test statistic: **Total Variation Distance**
         - Observed statistic: 12.76
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     - Result:
-        <iframe src = 'assests/ing_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
-        <figcation>Result of running the permutation test 10000 times
+<iframe src = 'assests/ing_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+<figcation>Result of running the permutation test 10000 times
         - a multimodal distribution with a center at around 12
         - **a p-value of 0.1819**.
     - Conclusion
+        - Since p-value is >0.05, we fail to reject the null hypothesis 
         - **We do *not* have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
 
 ------
