@@ -303,7 +303,7 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
         - Since p-value is >0.05, we fail to reject the null hypothesis 
         - **We do *not* have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
 
-We found that there is strong evidence to suggest that `avg_rating` is MAR, dependent on `calories (#)`, but is likely not dependent on `n_ingredients`. This means that reviewers are more likely to review recipes, but not leave a star rating (thus, the "0 stars rating") on recipes that have higher calories. 
+We found that there is strong evidence to suggest that `avg_rating` is MAR, dependent on `calories (#)`, but is likely not dependent on `n_ingredients`. This means that reviewers are more likely to review recipes, but not leave a star rating (thus, the "0 stars rating") on recipes that have higher calories. I cannot come up with a reasonable explanation for this correlation; it may be the case that `calories (#)` is a proxy for some other metric, and the `avg_rating` is actually NMAR on that column, and appears NAMR dependent on `calories (#)` just because of the proxy relationship.
 
 ------
 
