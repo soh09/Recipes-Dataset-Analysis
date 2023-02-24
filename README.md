@@ -8,20 +8,20 @@ by So Hirota (hirotasp92602@gmail.com)
 ### The dataset
 The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset. \
 * RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`.\
-column name | meaning
---- | ---
-`name` | the name of the recipe
-`id` | the id of the recipe
-`minutes` | the time it takes to make the recipe
-`contributor_id` | the id of the recipe contributor
-`submitted` | the date the recipe was submitted, in YY-MM-DD format
-`tags` | the tags associated with the recipe
-`nutrition` | nutritional information, in order of calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)
-`n_steps` | the number of steps the recipe requires
-`steps` | the descriptions of each step
-`description` | the description of the recipe
-`ingredients` | the ingredients of the recipe
-`n_ingredients` | the number of ingredients required to make the recipe
+| column name | meaning |
+| --- | --- |
+| `name` | the name of the recipe |
+| `id` | the id of the recipe |
+| `minutes` | the time it takes to make the recipe |
+| `contributor_id` | the id of the recipe contributor |
+| `submitted` | the date the recipe was submitted, in YY-MM-DD format |
+| `tags` | the tags associated with the recipe |
+| `nutrition` | nutritional information, in order of calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV) |
+| `n_steps` | the number of steps the recipe requires |
+| `steps` | the descriptions of each step |
+| `description` | the description of the recipe |
+| `ingredients` | the ingredients of the recipe | 
+| `n_ingredients` | the number of ingredients required to make the recipe | 
 
 
 * RAW_interactions.csv contains `731927 rows` and `5 columns`. The rows represent an individual review of a recipe, and the columns contain `user_id`, `recipe_id`, `date`, `rating`, `review`.
