@@ -11,7 +11,8 @@ The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interac
 
 RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`. `nutrition` is in "Percentage Daily Value (PDV)" besides `calories (#)`, which is kilocalories. 
 
-* | column name | meaning ||-----|-----|
+| column name | meaning |
+|-----|-----|
 | `name` | the name of the recipe |
 | `id` | the id of the recipe |
 | `minutes` | the time it takes to make the recipe |
@@ -28,7 +29,8 @@ RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the r
 
 RAW_interactions.csv contains `731927 rows` and `5 columns`. The rows represent an individual review of a recipe, and the columns contain `user_id`, `recipe_id`, `date`, `rating`, `review`.
 
-* | columns name | meaning ||-----|-----|
+| columns name | meaning |
+|-----|-----|
 | `user_id` | user id of the user who posted a review |
 | `recipe_id` | recipe id for the review, same as the ones in RAW_recipes.csv |
 | `date` | the date that the reivew was posted |
@@ -52,13 +54,13 @@ By investigating this question, a person attempting a diet may be able to avoid 
 1. Read in the two datasets using `pd.read_csv()`
 
 * Recipes
-    - | name  |     id |   minutes |   contributor_id | submitted   | tags | nutrition  |   n_steps | steps | description  | ingredients  | n_ingredients |
+| name  |     id |   minutes |   contributor_id | submitted   | tags | nutrition  |   n_steps | steps | description  | ingredients  | n_ingredients |
 |:------------|-------:|----------:|-----------------:|:------------|:-----|:-----------|----------:|:------|:-------------|:-------------|--------------:|
 | 1 brownies in the world best ever | 333281 | 40 | 985201 | 2008-10-27  | ['60-minutes-or-less', | [138.4, 10.0, 50.0, 3.0, 3.0, 19.0, 6.0] | 10 | ['heat the oven to 350f |  these are the most; | ['bittersweet chocolate', | 9 |
 | 1 in canada chocolate chip cookies   | 453467 | 45 | 1848091 | 2011-04-11 | ['60-minutes-or-less', | [595.1, 46.0, 211.0, 22.0, 13.0, 51.0, 26.0] | 12 | ['pre-heat oven the 350 | this is the recipe that| ['white sugar', 'brown| 11 |
 
 * interactions 
-    - |    user_id |   recipe_id | date |   rating | review                           |
+|    user_id |   recipe_id | date |   rating | review                           |
 |-----------:|------------:|:-----------|---------:|:---------------------------------|
 |    1293707 |       40893 | 2011-12-21 |        5 | So simple, so delicious! Great fo|
 |     126440 |       85009 | 2010-02-27 |        5 | I made the Mexican topping and to|
