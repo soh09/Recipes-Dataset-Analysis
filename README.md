@@ -53,7 +53,9 @@ By investigating this question, a person attempting a diet may be able to avoid 
 ### Data Cleaning
 1. Read in the two datasets using `pd.read_csv()`
 
-Recipes
+```python
+recipes.head(2)
+```
 
 
 | name                               | id     | minutes | contributor_id | submitted  | tags                   | nutrition                                    | n_steps | steps                   | description             | ingredients               | n_ingredients |
@@ -61,8 +63,9 @@ Recipes
 | 1 brownies in the world best ever  | 333281 | 40      | 985201         | 2008-10-27 | ['60-minutes-or-less', | [138.4, 10.0, 50.0, 3.0, 3.0, 19.0, 6.0]     | 10      | ['heat the oven to 350f | these are the most;     | ['bittersweet chocolate', | 9             |
 | 1 in canada chocolate chip cookies | 453467 | 45      | 1848091        | 2011-04-11 | ['60-minutes-or-less', | [595.1, 46.0, 211.0, 22.0, 13.0, 51.0, 26.0] | 12      | ['pre-heat oven the 350 | this is the recipe that | ['white sugar', 'brown    | 11            |
 
-
-interactions 
+```python
+interactions.head(5)
+``` 
 
 
 |    user_id |   recipe_id | date       |   rating | review                           |
@@ -299,6 +302,8 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
     - Conclusion
         - Since p-value is >0.05, we fail to reject the null hypothesis 
         - **We do *not* have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
+
+We found that there is strong evidence to suggest that `avg_rating` is MAR, dependent on `calories (#)`, but is likely not dependent on `n_ingredients`. This means that reviewers are more likely to review recipes, but not leave a star rating (thus, the "0 stars rating") on recipes that have higher calories. 
 
 ------
 
