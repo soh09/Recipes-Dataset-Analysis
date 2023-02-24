@@ -261,20 +261,21 @@ I will attempt to find depndency in missingness in the `calories (#)` columns by
 
 1. Is avg_rating missingness dependent on the `calories (#)` column?
     <iframe src = 'assests/miss_dist_cal.html' width = 800 height = 800 frameborder = 0> </iframe>
-    <figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)</figcation>
+    <figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)
     - Test statistic: **Total Variation Distance**
         - In order to use TVD as the test statistic, I converted the `calories (#)` into a categorical variable using bin width of 10 calories.
         - Observed statistic: 0.117
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
     - Result:
         <iframe src = 'assests/cal_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
-        <figcation>Result of running the permutation test 10000 times</figcaption>
+        <figcation>Result of running the permutation test 10000 times
         - a slightly right-skewed unimodal distribution with a center at around 0.08
         - **a p-value of 0**.
     - Conclusion
         - **We have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `cal_bins` column (and therefore the `calories (#)` column).**
 
-2. Is the avg_rating missingness dependent on the n_ingredients
+2. Is the avg_rating missingness dependent on the `n_ingredients` column?
+
     - Test statistic: **Total Variation Distance**
         - Observed statistic: 0.04019
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
