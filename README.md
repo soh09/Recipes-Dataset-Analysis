@@ -1,5 +1,5 @@
 # Analyzing the Recipes Dataset: Beat the Calories!
-by So Hirota (hirotasp92602@gmail.com)
+by So Hirota (hirotaso92602@gmail.com)
 
 ------
 
