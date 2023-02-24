@@ -114,11 +114,12 @@ At the end, dataframe `post_clean` looks like this.
         1. Overall, a unimodal shape with a heavy right skew, a peak around 150-220 calories, and a max = 45609.0.
         2. The recipe with the most calories was the "powdered hot cocoa mix" recipe, which was a recipe for 1/2 GALLON of hot cocco. No wonder it has 45609 calories...
     - Exploring the outliers
-    Using this python code to explore the top 10 recipes by calories 
-    
-```python
-post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
-``` 
+        * Using this python code to explore the top 10 recipes by calories (output is show below)   
+        ```python
+        post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
+        ``` 
+        * Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
+        * The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
 
     | name                                                            |   calories (#) |   minutes |   n_steps |   n_ingredients |   avg_rating |
     |:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
@@ -133,9 +134,6 @@ post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 
     | moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
     | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
     
-        * Observation
-            * Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
-            * The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
 
 ### Bivariate Analysis
 1. 
