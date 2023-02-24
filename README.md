@@ -8,8 +8,8 @@ by So Hirota (hirotasp92602@gmail.com)
 ### The dataset
 The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset.
 * RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`.
-| column name | meaning |
-|---|---|| `name` | the name of the recipe |
+
+| column name | meaning ||---|---|| `name` | the name of the recipe |
 | `id` | the id of the recipe |
 | `minutes` | the time it takes to make the recipe |
 | `contributor_id` | the id of the recipe contributor |
@@ -24,6 +24,7 @@ The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interac
 
 
 * RAW_interactions.csv contains `731927 rows` and `5 columns`. The rows represent an individual review of a recipe, and the columns contain `user_id`, `recipe_id`, `date`, `rating`, `review`.
+
 
 ### Question: What types of recipes have the most calories?
 The analysis in this notebook will be centered around this one question. The columns that may be relevant to the analysis include `mintues`, `nutrition` (this contains the calorie information), `tags`, `n_steps`, `n_ingredients`, `ingredients`, and `rating.`
