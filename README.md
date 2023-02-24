@@ -104,11 +104,13 @@ At the end, dataframe `post_clean` looks like this.
 post_clean.head(3)
 ```
 
+
 | name                                 |     id |   minutes | submitted           |   n_steps |   n_ingredients |   avg_rating |   calories (#) |   total fat (PDV) |   sugar (PDV) |   sodium (PDV) |   protein (PDV) |   saturated fat (PDV) |   carbohydrates (PDV) |   cal_bins |                   steps |             ingredients |
 |:-------------------------------------|-------:|----------:|:--------------------|----------:|----------------:|-------------:|---------------:|------------------:|--------------:|---------------:|----------------:|----------------------:|----------------------:|-----------:|:------------------------|:------------------------|
 | 1 brownies in the world    best ever | 333281 |        40 | 2008-10-27 00:00:00 |        10 |               9 |            4 |          138.4 |                10 |            50 |              3 |               3 |                    19 |                     6 |        200 | ['heat the oven to 350f | [bittersweet chocolate, |
 | 1 in canada chocolate chip cookies   | 453467 |        45 | 2011-04-11 00:00:00 |        12 |              11 |            5 |          595.1 |                46 |           211 |             22 |              13 |                    51 |                    26 |        600 | ['pre-heat oven the 350 | [white sugar, brown     |
 | 412 broccoli casserole               | 306168 |        40 | 2008-05-30 00:00:00 |         6 |               9 |            5 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 |        200 | ['preheat oven to 350   | [frozen broccoli cut    |
+
 
 ------
 
@@ -140,6 +142,7 @@ Here, I will inspect the relevant columns of the dataframe individually.
         * Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
         * The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
 
+
     | name                                                            |   calories (#) |   minutes |   n_steps |   n_ingredients |   avg_rating |
     |:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
     | granny jones  secret salty sweet biscuit recipe                 |        17551.6 |       150 |         5 |               5 |            3 |
@@ -152,7 +155,8 @@ Here, I will inspect the relevant columns of the dataframe individually.
     | ultimate coconut cake ii                                        |        28930.2 |       120 |        53 |              16 |            5 |
     | moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
     | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
-    
+
+
 ------
 
 ### Bivariate Analysis
@@ -193,23 +197,23 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
     ```
 
 
-| cal_bins | ('mean', 'avg_rating') | ('mean', 'minutes') | ('mean', 'n_ingredients') | ('median', 'avg_rating') | ('median', 'minutes') | ('median', 'n_ingredients') |
-|--:-------|--:---------------------|--:------------------|--:------------------------|--:-----------------------|--:--------------------|--:--------------------------|
-| 100      | 4.64557                | 142.603             | 7.07242                   | 5                        | 20                    | 7                           |
-| 200      | 4.62707                | 71.1157             | 8.23044                   | 5                        | 30                    | 8                           |
-| 300      | 4.62246                | 84.0302             | 9.09422                   | 5                        | 35                    | 9                           |
-| 400      | 4.62012                | 91.412              | 9.6538                    | 5                        | 40                    | 9                           |
-| 500      | 4.6191                 | 195.309             | 10.0194                   | 5                        | 44                    | 10                          |
-| 600      | 4.62436                | 100.17              | 10.3268                   | 5                        | 45                    | 10                          |
-| 700      | 4.61904                | 91.6952             | 10.5283                   | 5                        | 45                    | 10                          |
-| 800      | 4.62502                | 128.646             | 10.6066                   | 5                        | 45                    | 10                          |
-| 900      | 4.64032                | 276.698             | 10.7848                   | 5                        | 50                    | 10                          |
-| 1000     | 4.61836                | 125.211             | 10.7967                   | 5                        | 50                    | 10                          |
-| 1100     | 4.58361                | 120.967             | 10.7433                   | 5                        | 45                    | 10                          |
-| 1200     | 4.62894                | 142.561             | 10.3385                   | 5                        | 45                    | 10                          |
-| 1300     | 4.58186                | 230.44              | 10.1769                   | 5                        | 45                    | 10                          |
-| 1400     | 4.64782                | 281.164             | 10.6641                   | 5                        | 50                    | 10                          |
-| 1500     | 4.6636                 | 124.933             | 10.1953                   | 5                        | 50                    | 9                           |
+    | cal_bins | ('mean', 'avg_rating') | ('mean', 'minutes') | ('mean', 'n_ingredients') | ('median', 'avg_rating') | ('median', 'minutes') | ('median', 'n_ingredients') |
+    |--:-------|--:---------------------|--:------------------|--:------------------------|--:-----------------------|--:--------------------|--:--------------------------|
+    | 100      | 4.64557                | 142.603             | 7.07242                   | 5                        | 20                    | 7                           |
+    | 200      | 4.62707                | 71.1157             | 8.23044                   | 5                        | 30                    | 8                           |
+    | 300      | 4.62246                | 84.0302             | 9.09422                   | 5                        | 35                    | 9                           |
+    | 400      | 4.62012                | 91.412              | 9.6538                    | 5                        | 40                    | 9                           |
+    | 500      | 4.6191                 | 195.309             | 10.0194                   | 5                        | 44                    | 10                          |
+    | 600      | 4.62436                | 100.17              | 10.3268                   | 5                        | 45                    | 10                          |
+    | 700      | 4.61904                | 91.6952             | 10.5283                   | 5                        | 45                    | 10                          |
+    | 800      | 4.62502                | 128.646             | 10.6066                   | 5                        | 45                    | 10                          |
+    | 900      | 4.64032                | 276.698             | 10.7848                   | 5                        | 50                    | 10                          |
+    | 1000     | 4.61836                | 125.211             | 10.7967                   | 5                        | 50                    | 10                          |
+    | 1100     | 4.58361                | 120.967             | 10.7433                   | 5                        | 45                    | 10                          |
+    | 1200     | 4.62894                | 142.561             | 10.3385                   | 5                        | 45                    | 10                          |
+    | 1300     | 4.58186                | 230.44              | 10.1769                   | 5                        | 45                    | 10                          |
+    | 1400     | 4.64782                | 281.164             | 10.6641                   | 5                        | 50                    | 10                          |
+    | 1500     | 4.6636                 | 124.933             | 10.1953                   | 5                        | 50                    | 9                           |
 
 
 - Observations
