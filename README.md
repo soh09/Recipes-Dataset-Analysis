@@ -7,6 +7,8 @@ by So Hirota (hirotaso92602@gmail.com)
 
 ### Understanding the Datasets
 The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset.
+
+
 RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`. `nutrition` is in "Percentage Daily Value (PDV)" besides `calories (#)`, which is kilocalories. 
 
 * | column name | meaning ||-----|-----|
@@ -44,6 +46,8 @@ By investigating this question, a person attempting a diet may be able to avoid 
 
 
 ## Cleaning and EDA
+
+
 ### Data Cleaning
 1. Read in the two datasets using `pd.read_csv()`
 
@@ -88,6 +92,10 @@ merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'r
 7. Preparing to convert `calories (#)` into a categorical variable by using `dfcut()` method, which takes in a dataframe and a bin width to "cut" the dataframe's `calories (#)` column by the given width. This effectively transforms the calories column into a categorical variable. This helps later on when I want to graph relationships between calories and another variable, or when I want to calculate TVD for hypothesis / permutation testing.
 
 At the end, dataframe `post_clean` looks like this.
+
+```python
+post_clean.head(3)
+```
 
 | name                                 |     id |   minutes | submitted           |   n_steps |   n_ingredients |   avg_rating |   calories (#) |   total fat (PDV) |   sugar (PDV) |   sodium (PDV) |   protein (PDV) |   saturated fat (PDV) |   carbohydrates (PDV) |   cal_bins |                   steps |             ingredients |
 |:-------------------------------------|-------:|----------:|:--------------------|----------:|----------------:|-------------:|---------------:|------------------:|--------------:|---------------:|----------------:|----------------------:|----------------------:|-----------:|:------------------------|:------------------------|
@@ -134,6 +142,7 @@ At the end, dataframe `post_clean` looks like this.
     | moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
     | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
     
+------
 
 ### Bivariate Analysis
 1. Mean `total fat (PDV)` vs `Calories (#)`
@@ -141,7 +150,7 @@ At the end, dataframe `post_clean` looks like this.
     <iframe src = 'assests/fat_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
     - The x position represents the bin of the calorie (goes up by 200), and the y position of the bar represents the average percentage value for `total fat (PDV)`
     - Observations
-        1. There seems to be a linear relationship bewteen `total fat (PDV)` and `calories (#)`, but after around 11000 calories, the data looks somewhat random
+        1. There seems to be a linear relationship bewteen `total fat (PDV)` and `calories (#)`. Interestingly, the association is very apparent until 3800 calories, then becomes a bit more variable to around 12000, then becomes very random after that. This may be due to the decreasing number of data points at higher calories.
         2. The linear relationship is positive, meaning that the higher the caloric value, the higher the total fat percentage is going to be.
 
 2. Median Calories for the Tags with Top 20 Median Calorie Values
@@ -153,6 +162,8 @@ At the end, dataframe `post_clean` looks like this.
     - Observations
         1. `pork-rib`, `whole-chicken`, and `wings` were the top three 
         2. Meat dishes and sphagetti dishes seem to be the most common. Meat dishes tend to be large in portion size, and spaghetti dishes are high in carbohydrates, likely resulting in the high calories. 
+
+-----
 
 ### Aggregation
 
@@ -191,7 +202,7 @@ At the end, dataframe `post_clean` looks like this.
         - It is likely harder to observe this pattern in the means because the mean is more susceptible to outliers
     - `n_ingredients` seems to have a trend of positive corrlation for both means and medians, but levels off at around 600 calories.
 
-
+-----
 
 ## Assessment of Missingness
 
