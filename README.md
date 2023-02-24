@@ -79,7 +79,7 @@ interactions
 merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'recipe_id')
 ```
     * I only want the reviews for recipes that are in RAW_recipes.csv, which is why I perform a left merge. This drops all reviews for recipes that are nonexistent in RAW_recipes.csv.
-4. In the merged df, I see that some rating values are 0. If I look at a few rows with rating of 0, I see that these 0 star ratings are actually unreliable. When inspecting the review column for rows with a 0 star rating, I observe that some reviews say that the recipe is wonderful and delicous, while some state that it was unpleasant. Therefore, I will elect to fill all 0s in the average rating column with np.nan, as this is likely some kind of error that occured during the data generating process. Perhaps the reviewer did not provide a star rating for the recipe since it was optional, and only wrote a written review for it.
+4. In the merged df, I see that some rating values are 0. If I look at a few rows with rating of 0, I see that these 0 star ratings are actually unreliable. When inspecting the review column for rows with a 0 star rating, I observe that some reviews say that the recipe is wonderful and delicous, while some state that it was unpleasant. To get further information, I signed up for food.com and confirmed that one can review a recipe without ever providing a star rating. Given this fact, we know that a rating of 0 actually means that there was no star rating for that recipe. Therefore, I will elect to fill all 0s in the average rating column with np.nan, as this is a direct result of the data generating process, making the star ratings an optional metric when reviewing recipes.
 5. Fix the data types of various columns
     1. `"submitted"` column was a string, so I changed it a datetime object using `pd.to_datetime()`
     2. `"tags"` was a string, which looked like a list
@@ -227,8 +227,6 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
 
 ## Assessment of Missingness
 
-### NMAR (Not Missing At Random) Analysis
-
 Let's quickly go over the missingness types. Definitions will be borrowed from the UCSD DSC80 class, lecture 12.
 
 | Type | Definition |
@@ -238,9 +236,22 @@ Let's quickly go over the missingness types. Definitions will be borrowed from t
 | Missing At Random (MAR) | Missingness of Values dependent on other column(s) in the dataset. |
 | Missing Completely At Random (MCAR) | Missingness of values does not depend on the column itself or other columns. |
 
+To start looking at missing values, I will identify which columns have missing values.
+```python
+new_recipes.isna().sum()[new_recipes.isna().sum() != 0]
+```
+results in
+```
+name              1
+description      70
+avg_rating     2609
+cal_bins         27
+dtype: int64
+```
 
+### NMAR (Not Missing At Random) Analysis
 
-
+`avg_rating` may be NMAR. From the data cleaning process, I filled in the `avg_rating` of 0 with `np.nan`, thus "creating" missing values in this column artificially. However, this step is reasonable, and was justified in the data cleaning step. We can reason that reviewers may be more likely to provide star ratings to recipes that they either enjoyed or hated. Therefore, the missingness of `avg_rating` may be dependent on the star rating itself.
 
 ------
 
