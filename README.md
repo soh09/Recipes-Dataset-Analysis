@@ -7,7 +7,7 @@ by So Hirota (hirotaso92602@gmail.com)
 
 ### Understanding the Datasets
 The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset.
-RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`.
+RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`. `nutrition` is in "Percentage Daily Value (PDV)" besides `calories (#)`, which is kilocalories. 
 
 * | column name | meaning ||-----|-----|
 | `name` | the name of the recipe |
@@ -136,7 +136,13 @@ At the end, dataframe `post_clean` looks like this.
     
 
 ### Bivariate Analysis
-1. 
+1. Mean `total fat (PDV)` vs `Calories (#)`
+    - Plot type: scatterplot
+    <iframe src = 'assests/fat_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    - The x position represents the bin of the calorie (goes up by 200), and the y position of the bar represents the average percentage value for `total fat (PDV)`
+    - Observations
+        1. There seems to be a linear relationship bewteen `total fat (PDV)` and `calories (#)`, but after around 11000 calories, the data looks somewhat random
+        2. The linear relationship is positive, meaning that the higher the caloric value, the higher the total fat percentage is going to be.
 
 ## Assessment of Missingness
 
