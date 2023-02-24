@@ -154,6 +154,45 @@ At the end, dataframe `post_clean` looks like this.
         1. `pork-rib`, `whole-chicken`, and `wings` were the top three 
         2. Meat dishes and sphagetti dishes seem to be the most common. Meat dishes tend to be large in portion size, and spaghetti dishes are high in carbohydrates, likely resulting in the high calories. 
 
+### Aggregation
+
+- The relationship of [avg_rating, minutes, n_ingredients] with calories, with mean and median aggregation
+    - I will only look at a subset of the recipes, where calories >= 1500. This is because the bulk of the data lies in that range, and to make the length of the resulting pivot table managable.
+- Code to generate the table
+    ```python
+    # cutting the post_clean df by 100s for the calories column
+    hundred_width = dfcut(post_clean, 100)
+    hundred_width = hundred_width.loc[hundred_width['calories (#)'] <= 1500]
+    hundred_width.pivot_table(index = 'cal_bins', values = ['minutes', 'n_ingredients', 'avg_rating'], aggfunc = ['mean', 'median'])
+    ```
+|            |    mean                  |            mean       |           mean              |      median                |          median         |          median               |
+|   cal_bins |   ('mean', 'avg_rating') |   ('mean', 'minutes') |   ('mean', 'n_ingredients') |   ('median', 'avg_rating') |   ('median', 'minutes') |   ('median', 'n_ingredients') |
+|-----------:|-------------------------:|----------------------:|----------------------------:|---------------------------:|------------------------:|------------------------------:|
+|        100 |                  4.64557 |              142.603  |                     7.07242 |                          5 |                      20 |                             7 |
+|        200 |                  4.62707 |               71.1157 |                     8.23044 |                          5 |                      30 |                             8 |
+|        300 |                  4.62246 |               84.0302 |                     9.09422 |                          5 |                      35 |                             9 |
+|        400 |                  4.62012 |               91.412  |                     9.6538  |                          5 |                      40 |                             9 |
+|        500 |                  4.6191  |              195.309  |                    10.0194  |                          5 |                      44 |                            10 |
+|        600 |                  4.62436 |              100.17   |                    10.3268  |                          5 |                      45 |                            10 |
+|        700 |                  4.61904 |               91.6952 |                    10.5283  |                          5 |                      45 |                            10 |
+|        800 |                  4.62502 |              128.646  |                    10.6066  |                          5 |                      45 |                            10 |
+|        900 |                  4.64032 |              276.698  |                    10.7848  |                          5 |                      50 |                            10 |
+|       1000 |                  4.61836 |              125.211  |                    10.7967  |                          5 |                      50 |                            10 |
+|       1100 |                  4.58361 |              120.967  |                    10.7433  |                          5 |                      45 |                            10 |
+|       1200 |                  4.62894 |              142.561  |                    10.3385  |                          5 |                      45 |                            10 |
+|       1300 |                  4.58186 |              230.44   |                    10.1769  |                          5 |                      45 |                            10 |
+|       1400 |                  4.64782 |              281.164  |                    10.6641  |                          5 |                      50 |                            10 |
+|       1500 |                  4.6636  |              124.933  |                    10.1953  |                          5 |                      50 |                             9 |
+
+- Observations
+    - `avg_rating` has no observable pattern in relation to `calories`: the means are all around 4.6, while the medians are all 5.0. Perhaps it is uniformly distributed.
+    - `minutes` seem random when looking at the mean, but when observing the median, we see a general positive correlation
+        - The more calories a recipe has, the longer it takes to prepare
+        - It is likely harder to observe this pattern in the means because the mean is more susceptible to outliers
+    - `n_ingredients` seems to have a trend of positive corrlation for both means and medians, but levels off at around 600 calories.
+
+
+
 ## Assessment of Missingness
 
 
