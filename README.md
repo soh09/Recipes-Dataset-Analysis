@@ -98,14 +98,44 @@ At the end, dataframe `post_clean` looks like this.
 ------
 
 ### Univariate Analysis
-1. n_ingredients
-    - Plot type: histogram
+1. `n_ingredients`
+    - Plot type: histogram,  box plot
     <iframe src = 'assests/dist_n_ingredients.html' width = 800 height = 800 frameborder = 0> </iframe>
+    - This is a historgram and box plot that describes the distributions of the column `n_ingredients`
     - Observations
-        1. Overall, a unimodal shape with a slight right skew
-        2. Peak at n_ingredients = 8
-        3. Max = 37
-        4. Generally, the recipes that had a lot of ingredients were recipes for bbq, chili, soups, and other dishes that uses a lot of spices. This makes sense, because there are many types of spices, and often multiple types of spices are used together to create flavor.
+        1. Overall, a unimodal shape with a slight right skew, a peak at n = 8, and a max of 37.
+        2. Generally, the recipes that had a lot of ingredients were recipes for bbq, chili, soups, and other dishes that uses a lot of spices. This makes sense, because there are many types of spices, and often multiple types of spices are used together to create flavor.
+
+2. `calories (#)`
+    - Plot type: histogram, box plot
+    <iframe src = 'assests/dist_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    - This is a historgram and box plot that describes the distributions of the column `calories (#)`
+    - Observations
+        1. Overall, a unimodal shape with a heavy right skew, a peak around 150-220 calories, and a max = 45609.0.
+        2. The recipe with the most calories was the "powdered hot cocoa mix" recipe, which was a recipe for 1/2 GALLON of hot cocco. No wonder it has 45609 calories...
+    - Exploring the outliers
+    Using this python code to explore the top 10 recipes by calories 
+    ```python
+    post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
+    ```
+
+    | name                                                            |   calories (#) |   minutes |   n_steps |   n_ingredients |   avg_rating |
+|:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
+| granny jones  secret salty sweet biscuit recipe                 |        17551.6 |       150 |         5 |               5 |            3 |
+| homesteader s fireweed honey                                    |        17554   |        60 |         6 |               6 |            5 |
+| cracker snack mix                                               |        18268.7 |        50 |         4 |              10 |            5 |
+| algerian khobz el dar    semolina bread                         |        18656   |       155 |        17 |              11 |            5 |
+| alternate honey barbecue sauce with riblets  applebee s copycat |        21497.8 |       225 |        16 |              12 |            5 |
+| coffee glazed doughnuts                                         |        22371.2 |        69 |        19 |              15 |            5 |
+| hocus pocus cottage cake                                        |        26604.4 |      3000 |        81 |              27 |            5 |
+| ultimate coconut cake ii                                        |        28930.2 |       120 |        53 |              16 |            5 |
+| moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
+| powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
+    
+        - Observation
+            - Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
+            - The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
+
 
 ## Assessment of Missingness
 
