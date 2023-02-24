@@ -303,10 +303,29 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
         - Since p-value is >0.05, we fail to reject the null hypothesis 
         - **We do *not* have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
 
+##### Result
+
 We found that there is strong evidence to suggest that `avg_rating` is MAR, dependent on `calories (#)`, but is likely not dependent on `n_ingredients`. This means that reviewers are more likely to review recipes, but not leave a star rating (thus, the "0 stars rating") on recipes that have higher calories. I cannot come up with a reasonable explanation for this correlation; it may be the case that `calories (#)` is a proxy for some other metric, and the `avg_rating` is actually NMAR on that column, and appears NAMR dependent on `calories (#)` just because of the proxy relationship.
 
 ------
 
 ## Hypothesis Testing
 
-With the power of hypothesis testing, I will try to answer the original question: what kinds of recipes have the highest calories?
+With the power of hypothesis testing, I will try to answer the original question: what kinds of recipes have the highest calories? Recall how I plotted the tags with the top 20 highest median calories? We will go back to the `tag` column to help us answer this quetion.
+The tag associated with the highest median calories was `pork-ribs`. Therefore, I will construct a hypothesis test to determine if there is an association betwen pork-ribs and calories. 
+
+***Null Hypothesis***: `calories (#)` and `pork-ribs` tag are **not related** - the high median `calories (#)` of recipes with `pork-ribs` tag is **due to random chance alone**.
+***Alternative Hypothesis***: `calories (#)` and `pork-ribs` tag **are related** - the high median `calories (#)` of recipes with `pork-ribs` tag is **not due to random chance alone**.
+
+The significance level will be set at 0.05.
+
+### Setup
+
+Test statistic: Median calories
+- Observed statistics (median calories for recipes with `pork-ribs` tag): 790.1
+Method: Randomly draw a `calories (#)` value 209 times and compute the median 1,000,000 times.
+- The sample size is 209 because there are 209 recipes with the `pork-ribs` tag
+
+### Result
+<iframe src = 'assests/hyp_test_result.html' width = 800 height = 400 frameborder = 0> </iframe>
+<figcation>Result of 1,000,000 Runs
