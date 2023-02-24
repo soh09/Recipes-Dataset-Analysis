@@ -68,14 +68,14 @@ By investigating this question, a person attempting a diet may be able to avoid 
 merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'recipe_id')
 ```
     * I only want the reviews for recipes that are in RAW_recipes.csv, which is why I perform a left merge. This drops all reviews for recipes that are nonexistent in RAW_recipes.csv.
-4. In the merged df, I see that some rating values are 0. If I look at a few rows with rating of 0, I see that these 0 star ratings are actually unreliable. When inspecting the review column for rows with a 0 star rating, I observe that some reviews say that the recipe is wonderful and delicous, while some statet that it was unpleasant. Therefore, I will elect to fill all 0s in the average rating column with np.nan, as this is likely some kind of error that occured during the data generating process. Perhaps the reviewer did not provide a star rating for the recipe since it was optional, and only wrote a written review for it.
+4. In the merged df, I see that some rating values are 0. If I look at a few rows with rating of 0, I see that these 0 star ratings are actually unreliable. When inspecting the review column for rows with a 0 star rating, I observe that some reviews say that the recipe is wonderful and delicous, while some state that it was unpleasant. Therefore, I will elect to fill all 0s in the average rating column with np.nan, as this is likely some kind of error that occured during the data generating process. Perhaps the reviewer did not provide a star rating for the recipe since it was optional, and only wrote a written review for it.
 5. Fix the data types of various columns
     1. `"submitted"` column was a string, so I changed it a datetime object using `pd.to_datetime()`
     2. `"tags"` was a string, which looked like a list
         1. I first converted the string back to a real list using `.transform()`
-        2. Used `MultiLabelBinarizer()` from the sklearn.preprocessing module to perform one-hot encoding
+        2. Used `MultiLabelBinarizer()` from the `sklearn.preprocessing` module to perform one-hot encoding
         3. I kept the one-hot encoded df seperate from the recipes df, since it had more than 500 columns
-        - A subset of the one-hot encoded df can be seen below
+        - A subset of the one-hot encoded dataframe can be seen below
         - |     id |   3-steps-or-less |   30-minutes-or-less |   4-hours-or-less |   5-ingredients-or-less |
           |-------:|------------------:|---------------------:|------------------:|------------------------:|
           | 286009 |                 0 |                    0 |                 1 |                       0 |
@@ -84,8 +84,8 @@ merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'r
     3. "nutrition" was also a string, which looked like a list formatted like : `[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbohydrates (PDV)]`
         1. I first converted the string back to a list of strings, then the strings to floats
         2. I sliced the list by index and assigned the values to their respective columns like calories, total fat, etc
-6. Dropping columns = [`'description'`, `'contributor_id'`] because there is no use for those columns when trying to answer the question.
-7. Preparing to convert `calories (#)` into a categorical variable by using `dfcut()` method, which takes in a dataframe and a bin width to "cut" the dataframe's `calories (#)` column by the given width.
+6. Dropping columns = [`'description'`, `'contributor_id'`] because there is likely no use for those columns when trying to answer the question.
+7. Preparing to convert `calories (#)` into a categorical variable by using `dfcut()` method, which takes in a dataframe and a bin width to "cut" the dataframe's `calories (#)` column by the given width. This effectively transforms the calories column into a categorical variable. This helps later on when I want to graph relationships between calories and another variable, or when I want to calculate TVD for hypothesis / permutation testing.
 
 At the end, dataframe `post_clean` looks like this.
 
@@ -115,9 +115,10 @@ At the end, dataframe `post_clean` looks like this.
         2. The recipe with the most calories was the "powdered hot cocoa mix" recipe, which was a recipe for 1/2 GALLON of hot cocco. No wonder it has 45609 calories...
     - Exploring the outliers
     Using this python code to explore the top 10 recipes by calories 
+    
     ```python
     post_clean.sort_values(by = 'calories (#)').iloc[-10:][['name', 'calories (#)', 'minutes', 'n_steps', 'n_ingredients', 'avg_rating']]
-    ```
+    ``` 
 
     | name                                                            |   calories (#) |   minutes |   n_steps |   n_ingredients |   avg_rating |
 |:----------------------------------------------------------------|---------------:|----------:|----------:|----------------:|-------------:|
@@ -132,10 +133,12 @@ At the end, dataframe `post_clean` looks like this.
 | moonshine  easy                                                 |        36188.8 |      7200 |        27 |               4 |            5 |
 | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
     
-        - Observation
-            - Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
-            - The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
+        * Observation
+            * Recipe with most calories is a powdered hot cocoa mix. I visited the food.com page for this website on the internet and it yield 1/2 gallons, so the incredible caloric count is actually not surprising.
+            * The recipes with the most calories seem to be whole meat dishes (ribs) and whole baked goods. Again, no surprise there.
 
+### Bivariate Analysis
+1. 
 
 ## Assessment of Missingness
 
