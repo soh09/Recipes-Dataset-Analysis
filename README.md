@@ -90,12 +90,21 @@ merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'r
 At the end, dataframe `post_clean` looks like this.
 | name                                 |     id |   minutes | submitted           |   n_steps |   n_ingredients |   avg_rating |   calories (#) |   total fat (PDV) |   sugar (PDV) |   sodium (PDV) |   protein (PDV) |   saturated fat (PDV) |   carbohydrates (PDV) |   cal_bins | steps | ingredients |
 |:-------------------------------------|-------:|----------:|:--------------------|----------:|----------------:|-------------:|---------------:|------------------:|--------------:|---------------:|----------------:|----------------------:|----------------------:|-----------:|:------|:------------|
-| 1 brownies in the world    best ever | 333281 |        40 | 2008-10-27 00:00:00 |        10 |               9 |            4 |          138.4 |                10 |            50 |              3 |               3 |                    19 |                     6 |        200 | ['heat the oven to 350f |[bittersweet chocolate,|
-| 1 in canada chocolate chip cookies   | 453467 |        45 | 2011-04-11 00:00:00 |        12 |              11 |            5 |          595.1 |                46 |           211 |             22 |              13 |                    51 |                    26 |        600 |['pre-heat oven the 350|[white sugar, brown|
-| 412 broccoli casserole               | 306168 |        40 | 2008-05-30 00:00:00 |         6 |               9 |            5 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 |        200 |['preheat oven to 350|[frozen broccoli cut|
+| 1 brownies in the world    best ever | 333281 |        40 | 2008-10-27 00:00:00 |        10 |               9 |            4 |          138.4 |                10 |            50 |              3 |               3 |                    19 |                     6 |        200 | ['heat the oven to 350f | [bittersweet chocolate, |
+| 1 in canada chocolate chip cookies   | 453467 |        45 | 2011-04-11 00:00:00 |        12 |              11 |            5 |          595.1 |                46 |           211 |             22 |              13 |                    51 |                    26 |        600 | ['pre-heat oven the 350 | [white sugar, brown |
+| 412 broccoli casserole               | 306168 |        40 | 2008-05-30 00:00:00 |         6 |               9 |            5 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 |        200 | ['preheat oven to 350 | [frozen broccoli cut |
 
 ------
 
+### Univariate Analysis
+1. n_ingredients
+    - Plot type: histogram
+    <iframe src = 'assests/dist_n_ingredients.html' width = 800 height = 800 frameborder = 0> </iframe>
+    - Observations
+        1. Overall, a unimodal shape with a slight right skew
+        2. Peak at n_ingredients = 8
+        3. Max = 37
+        4. Generally, the recipes that had a lot of ingredients were recipes for bbq, chili, soups, and other dishes that uses a lot of spices. This makes sense, because there are many types of spices, and often multiple types of spices are used together to create flavor.
 
 ## Assessment of Missingness
 
