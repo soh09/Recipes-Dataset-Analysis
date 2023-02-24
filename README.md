@@ -112,7 +112,6 @@ post_clean.head(3)
 | 412 broccoli casserole               | 306168 |        40 | 2008-05-30 00:00:00 |         6 |               9 |            5 |          194.8 |                20 |             6 |             32 |              22 |                    36 |                     3 |        200 | ['preheat oven to 350   | [frozen broccoli cut    |
 
 
-------
 
 ### Univariate Analysis
 
@@ -157,7 +156,6 @@ Here, I will inspect the relevant columns of the dataframe individually.
     | powdered hot cocoa mix                                          |        45609   |        10 |         4 |               4 |            5 |
 
 
-------
 
 ### Bivariate Analysis
 
@@ -182,7 +180,7 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
         1. `pork-rib`, `whole-chicken`, and `wings` were the top three 
         2. Meat dishes and sphagetti dishes seem to be the most common. Meat dishes tend to be large in portion size, and spaghetti dishes are high in carbohydrates, likely resulting in the high calories. 
 
------
+
 
 ### Aggregation
 
@@ -249,13 +247,44 @@ cal_bins         27
 dtype: int64
 ```
 
+
 ### NMAR (Not Missing At Random) Analysis
 
 `avg_rating` may be NMAR. From the data cleaning process, I filled in the `avg_rating` of 0 with `np.nan`, thus "creating" missing values in this column artificially. However, this step is reasonable, and was justified in the data cleaning step. We can reason that reviewers may be more likely to provide star ratings to recipes that they either enjoyed or hated. Therefore, the missingness of `avg_rating` may be dependent on the star rating itself.
 
+
+### Dependency Analysis
+
+I will attempt to find depndency in missingness in the `calories (#)` columns by performing two permutation tests. The significance level will be 0.05.
+
+#### Permutation Testing
+
+1. Is avg_rating missingness dependent on the `calories (#)` column?
+    <iframe src = 'assests/miss_dist_cal.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <figcaption>The distributions of calories (`cal_bins`) by Missingness of avg_rating (graph only shows calories >= 1800)</figcation>
+    - Test statistic: **Total Variation Distance**
+        - In order to use TVD as the test statistic, I converted the `calories (#)` into a categorical variable using bin width of 10 calories.
+        - Observed statistic: 0.117
+    - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
+    - Result:
+        <iframe src = 'assests/cal_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+        <figcation>Result of running the permutation test 10000 times</figcaption>
+        - a slightly right-skewed unimodal distribution with a center at around 0.08
+        - **a p-value of 0**.
+    - Conclusion
+        - **We have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `cal_bins` column (and therefore the `calories (#)` column).**
+
+2. Is the avg_rating missingness dependent on the n_ingredients
+    - Test statistic: **Total Variation Distance**
+        - Observed statistic: 0.04019
+    - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
+    - Result:
+        - a slightly right-skewed unimodal distribution with a center at around 0.032
+        - **a p-value of 0.0949**.
+    - Conclusion
+        - **We do not have sufficient evidence to suggest that the missingness of `avg_rating` column is dependent on the `n_ingredients` column.**
+
 ------
-
-
 
 ## Hypothesis Testing
 
