@@ -123,7 +123,7 @@ Here, I will inspect the relevant columns of the dataframe individually.
 
 1. `n_ingredients`
     - Plot type: histogram,  box plot
-    <iframe src = 'assests/dist_n_ingredients.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/dist_n_ingredients.html' width = 800 height = 600 frameborder = 0> </iframe>
     - This is a historgram and box plot that describes the distributions of the column `n_ingredients`
     - Observations
         1. Overall, a unimodal shape with a slight right skew, a peak at n = 8, and a max of 37.
@@ -131,7 +131,7 @@ Here, I will inspect the relevant columns of the dataframe individually.
 
 2. `calories (#)`
     - Plot type: histogram, box plot
-    <iframe src = 'assests/dist_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/dist_calories.html' width = 800 height = 600 frameborder = 0> </iframe>
     - This is a historgram and box plot that describes the distributions of the column `calories (#)`
     - Observations
         1. Overall, a unimodal shape with a heavy right skew, a peak around 150-220 calories, and a max = 45609.0.
@@ -167,7 +167,7 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
 
 1. Mean `total fat (PDV)` vs `Calories (#)`
     - Plot type: scatterplot
-    <iframe src = 'assests/fat_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/fat_calories.html' width = 800 height = 500 frameborder = 0> </iframe>
     - The x position represents the bin of the calorie (goes up by 200), and the y position of the bar represents the average percentage value for `total fat (PDV)`
     - Observations
         1. There seems to be a linear relationship bewteen `total fat (PDV)` and `calories (#)`. Interestingly, the association is very apparent until 3800 calories, then becomes a bit more variable to around 12000, then becomes very random after that. This may be due to the decreasing number of data points at higher calories.
@@ -177,7 +177,7 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
     - For this one, I'll use median as the measure of center, as I don't want the measure of center to be skewed due to outliers (and there were quite a few outliers, per the univariate analysis)
     - Additionally, I'll only consider tags that have at least 100 dishes with that tag, as I don't want random tags with a few high calorie dishes to skew the results
     - Plot type: horizontal bar chart
-    <iframe src = 'assests/top20tag_calories.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/top20tag_calories.html' width = 1000 height = 600 frameborder = 0> </iframe>
     - Each bar represents a tag category (such as `meat`, `main dish`) and the lengths of the bar represents the median value for `calories (#)`
     - Observations
         1. `pork-rib`, `whole-chicken`, and `wings` were the top three 
@@ -277,7 +277,7 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
         - In order to use TVD as the test statistic, I converted the `calories (#)` into a categorical variable using bin width of 10 calories.
         - Observed statistic: 0.117
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
-    <iframe src = 'assests/cal_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/cal_p_result.html' width = 800 height = 400 frameborder = 0> </iframe>
     <figcation>Result of running the permutation test 10000 times
     - Result:
         - a slightly right-skewed unimodal distribution with a center at around 0.08
@@ -294,7 +294,7 @@ I have two permutations that I want to attempt: one that will shuffle the `cal_b
     - Test statistic: **Total Variation Distance**
         - Observed statistic: 12.76
     - Method: Permutating the `missing_rating` column, and calculating the test statistic after each run
-    <iframe src = 'assests/ing_p_result.html' width = 800 height = 800 frameborder = 0> </iframe>
+    <iframe src = 'assests/ing_p_result.html' width = 800 height = 400 frameborder = 0> </iframe>
     <figcation>Result of running the permutation test 10000 times
     - Result:
         - a multimodal distribution with a center at around 12
