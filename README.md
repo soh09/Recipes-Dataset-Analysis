@@ -6,8 +6,8 @@ by So Hirota (hirotasp92602@gmail.com)
 ## Introduction
 
 ### The dataset
-The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset. \
-* RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`.\
+The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset.
+* RAW_recipes.csv contains `83782 rows` and `12 columns`. The rows represent the recipes, and the columns contain `name`, `id`, `minutes`, `contributor_id`, `submitted`, `tags`, `nutrition`, `n_steps`, `steps`, `description`, `ingredients`, `n_ingredients`.
 | column name | meaning |
 | --- | --- |
 | `name` | the name of the recipe |
