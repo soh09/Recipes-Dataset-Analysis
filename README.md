@@ -184,7 +184,6 @@ Here, I will inspect the revelant columns of the dataframe in relation to the `c
     hundred_width = hundred_width.loc[hundred_width['calories (#)'] <= 1500]
     hundred_width.pivot_table(index = 'cal_bins', values = ['minutes', 'n_ingredients', 'avg_rating'], aggfunc = ['mean', 'median'])
     ```
-|            |    mean                  |            mean       |           mean              |      median                |          median         |          median               |
 |   cal_bins |   ('mean', 'avg_rating') |   ('mean', 'minutes') |   ('mean', 'n_ingredients') |   ('median', 'avg_rating') |   ('median', 'minutes') |   ('median', 'n_ingredients') |
 |-----------:|-------------------------:|----------------------:|----------------------------:|---------------------------:|------------------------:|------------------------------:|
 |        100 |                  4.64557 |              142.603  |                     7.07242 |                          5 |                      20 |                             7 |
