@@ -329,3 +329,11 @@ Method: Randomly draw a `calories (#)` value 209 times and compute the median 1,
 ### Result
 <iframe src = 'assests/hyp_test_result.html' width = 800 height = 400 frameborder = 0> </iframe>
 <figcation>Result of 1,000,000 Runs
+
+Result
+- p-value of 0.0. We **reject** the null hypothesis.
+- This means that: the `calories (#)` and `pork-ribs` are likely to be related - it is unlikely that results this extreme (p-val of 0) would appear by pure chance. Since the observed statistic was all the way to the right compared to the empircal distribution of median calories (refer to graph below), recipes with the tag `pork-ribs` do indeed seem to have higher calories, compared to the calories distribution of the entire recipes dataset (but we can never say for sure!).
+
+## Conclusion
+
+Recipes for pork ribs seem have to have a tendency for higher calorie values. 
