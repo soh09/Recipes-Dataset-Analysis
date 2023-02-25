@@ -255,6 +255,8 @@ dtype: int64
 
 `avg_rating` may be NMAR. From the data cleaning process, I filled in the `avg_rating` of 0 with `np.nan`, thus "creating" missing values in this column artificially. However, this step is reasonable, and was justified in the data cleaning step. We can reason that reviewers may be more likely to provide star ratings to recipes that they either enjoyed or hated. Therefore, the missingness of `avg_rating` may be dependent on the star rating itself.
 
+If food.com were to change their reviewing process and added a required question like "How much did you like the recipe", where the options are thumbs up, thumbs sideways, and thumbs down, I think `avg_rating` may become MAR. If we assume my reasoning for `avg_rating` being NMAR is correct, then the "0 star rating" should be more associated with the "thumbs sideways" response than the "thumbs up" or "thumbs down" response.
+
 
 ### Dependency Analysis
 
