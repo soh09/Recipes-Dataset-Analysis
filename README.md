@@ -1,9 +1,16 @@
 # Analyzing the Recipes Dataset: Beat the Calories!
+
+A Data Science Project For DSC80 At The University of California, San Diego
+
 by So Hirota (hirotaso92602@gmail.com)
+
+Published 2/24/2023
 
 ------
 
 ## Introduction
+
+I will analyze the dataset provided using Pandas, Numpy, Plotly, hypothesis testing, and permutation testing.  
 
 ### Understanding the Datasets
 The recipes dataset contains two .csv files: the RAW_recpies and the RAW_interactions dataset.
