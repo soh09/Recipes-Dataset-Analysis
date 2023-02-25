@@ -89,7 +89,12 @@ interactions.head(5)
 merged = recipes.merge(interactions, how = 'left', left_on = 'id', right_on = 'recipe_id')
 ```
     * I only want the reviews for recipes that are in RAW_recipes.csv, which is why I perform a left merge. This drops all reviews for recipes that are nonexistent in RAW_recipes.csv.
-4. In the merged df, I see that some rating values are 0. If I look at a few rows with rating of 0, I see that these 0 star ratings are actually unreliable. When inspecting the review column for rows with a 0 star rating, I observe that some reviews say that the recipe is wonderful and delicous, while some state that it was unpleasant. To get further information, I signed up for food.com and confirmed that one can review a recipe without ever providing a star rating. Given this fact, we know that a rating of 0 actually means that there was no star rating for that recipe. Therefore, I will elect to fill all 0s in the average rating column with np.nan, as this is a direct result of the data generating process, making the star ratings an optional metric when reviewing recipes.
+4. In the merged df, I see that some rating values are 0.
+    1. Some some reviews say that the recipe is wonderful and delicous, while some state that it was unpleasant. Seems weird.
+    2. To get further information, I signed up for food.com and confirmed that one can review a recipe without ever providing a star rating.
+        - A "rating of 0" actually means that there was no star rating for that recipe, aka a missing value.
+        - This is a direct result of the data generation process, which makes providng a star rating optional
+    3. I filled all the 0s with np.nan to clearly indicate that they are missing values. 
 5. Fix the data types of various columns
     1. `"submitted"` column was a string, so I changed it a datetime object using `pd.to_datetime()`
     2. `"tags"` was a string, which looked like a list
